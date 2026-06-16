@@ -1,15 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-saffron: #FF4500;
+  /* Brand palette */
+  --color-saffron:  #FF4500;
+  --color-ember:    #FF6B35;   /* secondary warm accent */
+  --color-crimson:  #FF1E1E;   /* primary red */
   --color-surgical: #FFFFFF;
-  --color-pure: #000000;
+  --color-pure:     #000000;
+  --color-void:     #020202;
+
+  /* Typography */
+  --font-mono-brand: 'Space Mono', ui-monospace, monospace;
+  --font-sans-brand: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  .text-balance { text-wrap: balance; }
 }
 
 html, body {
@@ -18,9 +25,15 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  font-family: var(--font-sans-brand);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Glassmorphism overrides */
+/* Override Tailwind mono to use Space Mono */
+.font-mono { font-family: var(--font-mono-brand) !important; }
+
+/* Glassmorphism */
 .glass {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -28,7 +41,7 @@ html, body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Glassmorphism 2.0: CSS Noise Overlay */
+/* CSS Noise Overlay */
 .noise-overlay {
   position: absolute;
   inset: 0;
@@ -38,22 +51,152 @@ html, body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Base custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #050505;
-}
-::-webkit-scrollbar-thumb {
-  background: #222222;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #FF1E1E;
-}
+/* Scrollbar */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #FF1E1E; }
+
+/* ── Animations ─────────────────────────────────────────── */
 
 @keyframes shimmer {
   from { background-position: 200% center; }
-  to { background-position: -200% center; }
+  to   { background-position: -200% center; }
+}
+
+@keyframes scanline-drift {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@keyframes ember-float {
+  0%, 100% { transform: translateY(0px)    scale(1);    opacity: 0.6; }
+  50%       { transform: translateY(-10px) scale(1.05); opacity: 1; }
+}
+
+@keyframes badge-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(255,30,30,0.3);  }
+  50%       { box-shadow: 0 0 20px rgba(255,30,30,0.6); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(40% 0 61% 0); transform: translate(-2px, 0); }
+  20%       { clip-path: inset(92% 0  1% 0); transform: translate( 2px, 0); }
+  40%       { clip-path: inset(43% 0  1% 0); transform: translate( 0px, 0); }
+  60%       { clip-path: inset(25% 0 58% 0); transform: translate(-2px, 0); }
+  80%       { clip-path: inset(54% 0  7% 0); transform: translate( 2px, 0); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(10% 0 80% 0); transform: translate( 2px, 0); }
+  25%       { clip-path: inset(60% 0 30% 0); transform: translate(-2px, 0); }
+  50%       { clip-path: inset(30% 0 50% 0); transform: translate( 0px, 0); }
+  75%       { clip-path: inset(80% 0  5% 0); transform: translate( 2px, 0); }
+}
+
+@keyframes card-scan {
+  0%   { top: -100%; }
+  100% { top: 200%; }
+}
+
+/* ── Scanlines ──────────────────────────────────────────── */
+
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.07) 3px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+  pointer-events: none;
+  animation: scanline-drift 8s linear infinite;
+}
+
+/* ── HUD corner brackets ────────────────────────────────── */
+
+.hud-bracket {
+  width: 20px;
+  height: 20px;
+  border-color: rgba(220, 38, 38, 0.45);
+  border-style: solid;
+}
+.hud-bracket-tl { border-width: 1px 0 0 1px; }
+.hud-bracket-tr { border-width: 1px 1px 0 0; }
+.hud-bracket-bl { border-width: 0 0 1px 1px; }
+.hud-bracket-br { border-width: 0 1px 1px 0; }
+
+/* ── Neon glows ─────────────────────────────────────────── */
+
+.neon-red {
+  text-shadow:
+    0 0  6px rgba(255, 30, 30, 0.9),
+    0 0 14px rgba(255, 30, 30, 0.6),
+    0 0 30px rgba(255, 30, 30, 0.3);
+}
+
+.neon-ember {
+  text-shadow:
+    0 0  6px rgba(255, 107, 53, 0.9),
+    0 0 14px rgba(255, 107, 53, 0.5);
+}
+
+/* ── Glitch wrapper ─────────────────────────────────────── */
+
+.glitch-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-wrapper::before,
+.glitch-wrapper::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.glitch-wrapper::before {
+  color: #FF1E1E;
+  animation: glitch-1 3.5s infinite steps(1);
+  opacity: 0.3;
+}
+
+.glitch-wrapper::after {
+  color: #fff;
+  animation: glitch-2 4s infinite steps(1) 0.5s;
+  opacity: 0.15;
+}
+
+/* ── Card scan line ─────────────────────────────────────── */
+
+.card-scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 30, 30, 0.04) 50%,
+    transparent
+  );
+  pointer-events: none;
+  animation: card-scan 3.5s linear infinite;
+  z-index: 5;
+}
+
+/* ── Brand badge ────────────────────────────────────────── */
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 4px 10px;
+  border: 1px solid rgba(255, 30, 30, 0.3);
+  border-radius: 999px;
+  background: rgba(255, 30, 30, 0.05);
+  backdrop-filter: blur(10px);
+  animation: badge-glow 3s ease-in-out infinite;
 }

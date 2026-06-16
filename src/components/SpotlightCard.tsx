@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-export function SpotlightCard({ children, className = "" }: { children: React.ReactNode, className?: string }) {
+export function SpotlightCard({ children, className = "", style }: { children: React.ReactNode, className?: string, style?: React.CSSProperties }) {
   const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -45,6 +45,7 @@ export function SpotlightCard({ children, className = "" }: { children: React.Re
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={`relative overflow-hidden rounded-2xl bg-black/40 backdrop-blur-xl border border-white/5 transition-colors duration-500 overflow-hidden ${className}`}
+      style={style}
     >
       {/* Structural Noise Overlay */}
       <div className="noise-overlay" />
