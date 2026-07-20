@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export function BootSequence({ onComplete }: { onComplete: () => void }) {
   const [text, setText] = useState("");
-  const fullText = "> ./orchestrator --secure --resolve-anomalies";
+  const fullText = "> initializing vyuh matrix...";
   
   useEffect(() => {
     let i = 0;

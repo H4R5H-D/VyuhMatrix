@@ -1,92 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { SpotlightCard } from "./SpotlightCard";
+import { motion } from "framer-motion";
 
-const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
-
-function CryptoText({ finalValue, isActive }: { finalValue: string; isActive: boolean }) {
-  const [displayText, setDisplayText] = useState(finalValue);
-
-  useEffect(() => {
-    if (!isActive) {
-      setDisplayText(finalValue);
-      return;
-    }
-
-    let iteration = 0;
-    const maxIterations = 15;
-    
-    const interval = setInterval(() => {
-      setDisplayText((prev) => 
-        prev
-          .split("")
-          .map((letter, index) => {
-            if (index < iteration) return finalValue[index];
-            return CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
-          })
-          .join("")
-      );
-
-      if (iteration >= finalValue.length) {
-        clearInterval(interval);
-      }
-      
-      iteration += 1 / 3;
-    }, 30);
-
-    return () => clearInterval(interval);
-  }, [isActive, finalValue]);
-
-  return <>{displayText}</>;
-}
+const nodes = [
+  { value: "72h", label: "From kickoff to live system" },
+  { value: "4–5 hrs", label: "Saved per week, guaranteed" },
+  { value: "24/7", label: "AI agents working for you" },
+];
 
 export function MetricNodes() {
-  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
-
-  const nodes = [
-    {
-      id: "alpha",
-      value: "99.999%",
-      label: "Network Uptime Guarantee",
-      glow: false,
-    },
-    {
-      id: "beta",
-      value: "< 5ms",
-      label: "Threat Detection Latency",
-      glow: true, // Needs red pulsating text shadow
-    },
-    {
-      id: "gamma",
-      value: "24/7",
-      label: "Autonomous Orchestration",
-      glow: false,
-    }
-  ];
-
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1400px] mx-auto relative z-20">
-      {nodes.map((node) => (
-        <div 
-          key={node.id} 
-          onMouseEnter={() => setHoveredNode(node.id)}
-          onMouseLeave={() => setHoveredNode(null)}
-          className="h-full"
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-[1120px] mx-auto px-6 relative z-20">
+      {nodes.map((node, i) => (
+        <motion.div
+          key={node.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: i * 0.1 }}
+          className="p-10 flex flex-col justify-center rounded-2xl border border-white/[0.07] bg-white/[0.02]"
         >
-          <SpotlightCard className="p-10 flex flex-col justify-center h-full min-h-[240px]">
-            <h4 
-              className={`text-6xl font-black mb-4 font-sans tracking-tighter ${
-                node.glow ? 'text-white drop-shadow-[0_0_25px_rgba(255,30,30,0.8)] animate-pulse' : 'text-white'
-              }`}
-            >
-              <CryptoText finalValue={node.value} isActive={hoveredNode === node.id} />
-            </h4>
-            <p className="font-mono text-sm tracking-widest uppercase text-gray-500">
-              {node.label}
-            </p>
-          </SpotlightCard>
-        </div>
+          <span
+            className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-3"
+            style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
+          >
+            {node.value}
+          </span>
+          <span className="text-sm text-gray-500 font-light">{node.label}</span>
+        </motion.div>
       ))}
     </div>
   );

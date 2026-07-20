@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { Background3D } from "@/components/Background3D";
-import { HUDOverlay } from "@/components/HUDOverlay";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { VyuhLogo } from "@/components/VyuhLogo";
@@ -234,7 +233,7 @@ function SolutionCard({
           </ul>
 
           <motion.a
-            href="#contact"
+            href="/#contact"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.8 }}
@@ -351,7 +350,6 @@ export default function SolutionsPage() {
       </div>
 
       <Background3D />
-      <HUDOverlay />
 
       <div className="relative z-10 w-full">
         <Navbar />
@@ -433,7 +431,6 @@ export default function SolutionsPage() {
                   transition={{ duration: 0.7, delay: i * 0.15 }}
                   className="group relative p-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] backdrop-blur-xl hover:border-[#FF1E1E]/25 hover:bg-[#FF1E1E]/[0.03] transition-all duration-500"
                 >
-                  <div className="card-scan-line opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="w-12 h-12 rounded-full bg-[#FF1E1E]/10 border border-[#FF1E1E]/20 flex items-center justify-center mb-6 group-hover:shadow-[0_0_20px_rgba(255,30,30,0.2)] transition-shadow duration-500">
                     <Icon className="w-5 h-5 text-[#FF1E1E]" />
                   </div>

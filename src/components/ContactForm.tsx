@@ -35,17 +35,17 @@ export function ContactForm() {
           className="text-center mb-12"
         >
           <p className="font-mono text-[11px] tracking-[0.4em] text-[#FF1E1E]/50 uppercase mb-4">
-            // Initiate Contact
+            {"// Contact"}
           </p>
           <h2
             className="font-mono font-black tracking-tight text-white mb-4"
             style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
           >
-            Secure Channel
+            Let&apos;s Talk
           </h2>
           <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-[#FF1E1E]/60 to-transparent mx-auto mb-4" />
           <p className="font-mono text-[12px] text-gray-600 tracking-widest">
-            DIRECT_NODE ·{" "}
+            EMAIL ·{" "}
             <a
               href="mailto:harsh@vyuhmatrix.com"
               className="text-[#FF1E1E]/70 hover:text-[#FF1E1E] transition-colors"
@@ -74,15 +74,6 @@ export function ContactForm() {
               WebkitBackdropFilter: "blur(24px)",
             }}
           >
-            {/* Card scan line */}
-            <div className="card-scan-line opacity-30 group-hover:opacity-70 transition-opacity duration-500" />
-
-            {/* HUD corners */}
-            <span className="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#FF1E1E]/30 rounded-none" />
-            <span className="absolute top-3 right-3 w-4 h-4 border-t border-r border-[#FF1E1E]/30 rounded-none" />
-            <span className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-[#FF1E1E]/30 rounded-none" />
-            <span className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-[#FF1E1E]/30 rounded-none" />
-
             {sent ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -92,9 +83,9 @@ export function ContactForm() {
                 <div className="w-16 h-16 rounded-full border border-[#FF1E1E]/30 bg-[#FF1E1E]/10 flex items-center justify-center">
                   <Send className="w-6 h-6 text-[#FF1E1E]" />
                 </div>
-                <p className="font-mono text-white text-lg tracking-wide">Transmission received.</p>
+                <p className="font-mono text-white text-lg tracking-wide">Message received.</p>
                 <p className="font-mono text-[11px] text-gray-600 tracking-widest">
-                  RESPONSE_ETA :: &lt;24h
+                  We&apos;ll reply within 24 hours.
                 </p>
               </motion.div>
             ) : (
@@ -125,12 +116,12 @@ export function ContactForm() {
                   {sending ? (
                     <>
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      Transmitting...
+                      Sending...
                     </>
                   ) : (
                     <>
                       <Send className="w-3.5 h-3.5" />
-                      Send Transmission
+                      Send Message
                     </>
                   )}
                 </button>
@@ -147,7 +138,7 @@ export function ContactForm() {
           transition={{ delay: 0.5 }}
           className="text-center mt-8 font-mono text-[9px] text-gray-700 tracking-[0.3em] uppercase"
         >
-          AES-256 encrypted · Zero retention · Response within 24h
+          Encrypted in transit · No spam, ever · Reply within 24h
         </motion.p>
       </div>
     </section>
