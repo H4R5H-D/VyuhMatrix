@@ -13,6 +13,8 @@ import { ClientMarquee } from "@/components/ClientMarquee";
 import { FaqSection } from "@/components/FaqSection";
 import { VyuhLogo } from "@/components/VyuhLogo";
 import { OfferBlock } from "@/components/OfferBlock";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { KineticHeading, Reveal } from "@/components/KineticHeading";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -28,6 +30,10 @@ export default function Home() {
       </div>
 
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}
+
+      {/* Award-site signatures: scroll progress + fixed film grain */}
+      <ScrollProgress />
+      <div className="grain" />
 
       <Background3D />
 
@@ -69,18 +75,16 @@ export default function Home() {
                 </span>
               </motion.div>
 
-              {/* Title — big, clean, sans (not mono) for a modern premium feel */}
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+              {/* Title — kinetic word-by-word reveal, type as the hero */}
+              <KineticHeading
+                delay={0.4}
                 className="font-bold tracking-tight text-white leading-[1.05]"
                 style={{ fontSize: "clamp(2.75rem, 8vw, 6rem)", fontFamily: "var(--font-space-grotesk), sans-serif" }}
-              >
-                AI that saves your
-                <br />
-                team <span className="text-[#FF1E1E]">hours every week</span>
-              </motion.h1>
+                segments={[
+                  { text: "AI" }, { text: "that" }, { text: "saves" }, { text: "your" }, { br: true },
+                  { text: "team" }, { text: "hours", accent: true }, { text: "every", accent: true }, { text: "week", accent: true },
+                ]}
+              />
 
               {/* Subtitle */}
               <motion.p
@@ -97,22 +101,28 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.8 }}
+                transition={{ duration: 1, delay: 1.1 }}
                 className="flex flex-col sm:flex-row items-center gap-4 mt-12"
               >
-                <a
+                <motion.a
                   href="/#contact"
-                  className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white text-black font-medium text-sm hover:bg-gray-200 transition-all duration-300"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white text-black font-medium text-sm hover:shadow-[0_8px_30px_rgba(255,255,255,0.15)]"
                 >
                   Book a free consult
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="/solutions"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-white/15 text-gray-300 font-medium text-sm hover:border-white/40 hover:text-white transition-all duration-300"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-white/15 text-gray-300 font-medium text-sm hover:border-white/40 hover:text-white"
                 >
                   See what we build
-                </a>
+                </motion.a>
               </motion.div>
             </div>
 
