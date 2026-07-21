@@ -36,7 +36,7 @@ export function Navbar() {
         <a href="/#contact"   className="hover:text-white transition-colors duration-300 hidden md:block">Contact</a>
 
         <a
-          href="/#contact"
+          href="/access"
           className="px-5 py-2 border border-[#FF1E1E]/40 text-white font-mono text-xs tracking-widest uppercase hover:bg-[#FF1E1E]/10 hover:border-[#FF1E1E]/70 hover:shadow-[0_0_16px_rgba(255,30,30,0.3)] transition-all duration-300"
         >
           [ ACCESS ]

@@ -155,7 +155,7 @@ export default function Home() {
             id="solutions"
             className="py-28 md:py-36 flex flex-col justify-center items-center relative pointer-events-none"
           >
-            <div className="max-w-4xl w-full px-6 mb-16 text-center pointer-events-auto">
+            <Reveal className="max-w-4xl w-full px-6 mb-16 text-center pointer-events-auto">
               <p className="font-mono text-[11px] tracking-[0.35em] text-gray-500 uppercase mb-5">
                 What we do
               </p>
@@ -165,7 +165,7 @@ export default function Home() {
               >
                 Five ways we put AI to work
               </h2>
-            </div>
+            </Reveal>
             <div className="pointer-events-auto w-full relative z-20">
               <BentoGrid />
             </div>
