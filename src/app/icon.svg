@@ -1,0 +1,42 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Dark circular backdrop with faint red bloom -->
+    <radialGradient id="bg" cx="50%" cy="46%" r="60%">
+      <stop offset="0%"  stop-color="#1a0000"/>
+      <stop offset="55%" stop-color="#0a0000"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+    <!-- Glossy red gem gradient -->
+    <linearGradient id="gem" x1="120" y1="20" x2="120" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#FF6A6A"/>
+      <stop offset="38%"  stop-color="#FF1E1E"/>
+      <stop offset="100%" stop-color="#C20000"/>
+    </linearGradient>
+
+    <!-- Top gloss highlight -->
+    <linearGradient id="gloss" x1="120" y1="20" x2="120" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="14" flood-color="#FF1E1E" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <!-- Backdrop -->
+  <circle cx="120" cy="120" r="120" fill="url(#bg)"/>
+
+  <!-- VM gem: two peaks = M, bottom apex = V -->
+  <polygon points="120,220 15,132 45,20 120,88 195,20 225,132" fill="url(#gem)" filter="url(#glow)"/>
+
+  <!-- Inner gloss facet -->
+  <polygon points="120,205 33,132 58,38 120,98 182,38 207,132" fill="url(#gloss)"/>
+
+  <!-- Bright rim on the two top edges -->
+  <line x1="15"  y1="132" x2="45"  y2="20"  stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+  <line x1="195" y1="20"  x2="225" y2="132" stroke="#ffffff" stroke-width="2" opacity="0.32"/>
+  <line x1="45"  y1="20"  x2="120" y2="88"  stroke="#ffffff" stroke-width="1.5" opacity="0.28"/>
+  <line x1="120" y1="88"  x2="195" y2="20"  stroke="#ffffff" stroke-width="1.5" opacity="0.24"/>
+</svg>

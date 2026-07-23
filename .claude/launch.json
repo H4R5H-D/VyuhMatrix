@@ -1,0 +1,10 @@
+{
+  "autoPort": true,
+  "servers": [
+    {
+      "name": "web",
+      "command": "npm run dev",
+      "autoPort": true
+    }
+  ]
+}
