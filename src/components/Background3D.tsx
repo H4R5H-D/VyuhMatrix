@@ -10,46 +10,29 @@ function Globe() {
   const groupRef = useRef<THREE.Group>(null);
   const { mouse } = useThree();
 
-  const { geometry, wireGeometry, original } = useMemo(() => {
+  const { geometry, original } = useMemo(() => {
     const geo = new THREE.IcosahedronGeometry(5, 12);
     const pos = geo.attributes.position;
     const count = pos.count;
     const orig = new Float32Array(count * 3);
     const col = new Float32Array(count * 3);
-    // The shell shares the animated positions but has its own dark duotone shading.
-    const wireCol = new Float32Array(count * 3);
-    const wireBlue = new THREE.Color("#0b5f80");
-    const wireRed = new THREE.Color("#7a1a1a");
-    const wire = new THREE.Color();
 
     const white = new THREE.Color("#ffffff");
     const red = new THREE.Color("#FF1E1E");
-    // Lighter than the palette's #007BA7 so the points still glow on black.
-    const blue = new THREE.Color("#1E9BD0");
     const dim = new THREE.Color("#5a5a5a");
-    const accent = new THREE.Color();
 
     for (let i = 0; i < count; i++) {
       orig[i * 3] = pos.getX(i);
       orig[i * 3 + 1] = pos.getY(i);
       orig[i * 3 + 2] = pos.getZ(i);
       const roll = Math.random();
-      // Duotone: accent points shade from cerulean (left) to red (right).
-      accent.lerpColors(blue, red, THREE.MathUtils.smoothstep(pos.getX(i), -2, 2));
-      const c = roll < 0.2 ? accent : roll < 0.5 ? white : dim;
+      const c = roll < 0.14 ? red : roll < 0.5 ? white : dim;
       col[i * 3] = c.r;
       col[i * 3 + 1] = c.g;
       col[i * 3 + 2] = c.b;
-      wire.lerpColors(wireBlue, wireRed, THREE.MathUtils.smoothstep(pos.getX(i), -2, 2));
-      wireCol[i * 3] = wire.r;
-      wireCol[i * 3 + 1] = wire.g;
-      wireCol[i * 3 + 2] = wire.b;
     }
     geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
-    const wireGeo = new THREE.BufferGeometry();
-    wireGeo.setAttribute("position", pos);
-    wireGeo.setAttribute("color", new THREE.BufferAttribute(wireCol, 3));
-    return { geometry: geo, wireGeometry: wireGeo, original: orig };
+    return { geometry: geo, original: orig };
   }, []);
 
   useFrame((state) => {
@@ -80,8 +63,8 @@ function Globe() {
   return (
     <group ref={groupRef}>
       {/* Wireframe shell */}
-      <mesh geometry={wireGeometry}>
-        <meshBasicMaterial vertexColors wireframe transparent opacity={0.18} />
+      <mesh geometry={geometry}>
+        <meshBasicMaterial color="#7a1a1a" wireframe transparent opacity={0.18} />
       </mesh>
       {/* Glowing vertex points */}
       <points geometry={geometry}>

@@ -25,10 +25,9 @@ export default function Home() {
   return (
     <main className="relative bg-[#040404] text-gray-300 selection:bg-[#FF1E1E] selection:text-white overflow-x-hidden min-h-screen">
 
-      {/* Duotone ambient light: cerulean from the left, brand red from the right */}
+      {/* Single, soft ambient glow — no more competing layers */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[12%] left-[30%] -translate-x-1/2 w-[700px] h-[560px] max-w-[80vw] bg-[#007BA7]/[0.07] blur-[160px] rounded-full" />
-        <div className="absolute top-[18%] left-[70%] -translate-x-1/2 w-[700px] h-[560px] max-w-[80vw] bg-[#FF1E1E]/[0.06] blur-[160px] rounded-full" />
+        <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] max-w-[95vw] bg-[#FF1E1E]/[0.05] blur-[160px] rounded-full" />
       </div>
 
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}
@@ -134,7 +133,7 @@ export default function Home() {
                 transition={{ duration: 1, delay: 1.3 }}
                 className="group mt-8 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-gray-500 hover:text-white transition-colors"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#007BA7]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF1E1E]" />
                 Our product: Vyuh Drift, social scheduling with proof
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </motion.a>
