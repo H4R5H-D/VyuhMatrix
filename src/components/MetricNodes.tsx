@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const nodes = [
   { value: "72h", label: "From kickoff to live system" },
-  { value: "4–5 hrs", label: "Saved per week, guaranteed" },
+  { value: "4–5 hrs", label: "Found per week in your audit, or you don't pay" },
   { value: "24/7", label: "AI agents working for you" },
 ];
 

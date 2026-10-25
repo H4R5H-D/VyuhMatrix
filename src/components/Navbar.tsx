@@ -33,6 +33,7 @@ export function Navbar() {
       <div className="flex items-center gap-8 text-sm font-mono tracking-wide text-gray-400">
         <a href="/#about"     className="hover:text-white transition-colors duration-300 hidden md:block">Home</a>
         <a href="/solutions"  className="hover:text-white transition-colors duration-300 hidden md:block">Solutions</a>
+        <a href="/#drift"     className="hover:text-white transition-colors duration-300 hidden md:block">Drift</a>
         <a href="/#contact"   className="hover:text-white transition-colors duration-300 hidden md:block">Contact</a>
 
         <a
