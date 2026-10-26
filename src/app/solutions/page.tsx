@@ -5,10 +5,11 @@ import { Background3D } from "@/components/Background3D";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { VyuhLogo } from "@/components/VyuhLogo";
+import { DriftSection } from "@/components/DriftSection";
 import { motion, useInView } from "framer-motion";
 import {
   ShieldCheck, TrendingUp, Megaphone, Users, LayoutTemplate,
-  Check, ArrowRight, Zap, Globe, Lock,
+  Check, ArrowRight, Zap, BadgeCheck, Lock,
 } from "lucide-react";
 
 /* ── Data ──────────────────────────────────────────────────────── */
@@ -19,20 +20,20 @@ const solutions = [
     num: "01",
     domain: "Defense",
     title: "Cyber Security AI",
-    subtitle: "Military-grade autonomous threat neutralization",
-    desc: "Our AI doesn't just detect threats — it hunts them. A self-learning defense system that monitors your entire network in real time, isolates anomalies before they escalate, and adapts continuously to emerging attack vectors.",
+    subtitle: "Alert triage, built around your systems",
+    desc: "AI that watches your logs and alerts, groups what matters, and drafts the first response, so your team spends its time on real incidents instead of noise. We tell you up front what it can and cannot catch.",
     features: [
-      "Real-time threat detection & neutralization",
-      "Autonomous network perimeter monitoring",
-      "Zero-day vulnerability assessment",
-      "Incident response automation",
-      "Compliance reporting (SOC2 / ISO 27001)",
+      "Log and alert monitoring",
+      "Anomalies flagged with the evidence attached",
+      "Incident triage and first-response drafts",
+      "A weekly summary of what was flagged and why",
+      "Built on the tools you already run",
     ],
     terminal: [
-      "> SCANNING: 247,832 packets/sec",
-      "> THREAT_DETECTED: 0 anomalies",
-      "> FIREWALL: ACTIVE — 99.97% integrity",
-      "> LAST_INCIDENT: [NEUTRALIZED] 4d ago",
+      "> START: AI Time Audit, one week",
+      "> MAP: your alerts and who handles them",
+      "> BUILD: on your logs, tested before launch",
+      "> PROVE: results from your own systems",
     ],
     icon: ShieldCheck,
     accent: "#FF1E1E",
@@ -44,20 +45,20 @@ const solutions = [
     num: "02",
     domain: "Revenue",
     title: "Sales Automation",
-    subtitle: "Scale revenue without scaling headcount",
-    desc: "AI agents that work 24/7 — qualifying inbound leads, running multi-touch outreach sequences, handling objections in natural language, and closing deals at scale. Your best sales rep, cloned infinitely.",
+    subtitle: "Lead research and outreach, with a person in the loop",
+    desc: "AI that researches leads, scores them against your ideal customer, and drafts personal outreach for your team to review and send. No mass blasting: every message is one a person approved.",
     features: [
-      "AI-powered lead scoring & qualification",
-      "Personalized outreach at 10,000× scale",
-      "Natural language objection handling",
-      "CRM sync (Salesforce, HubSpot, Pipedrive)",
-      "Revenue forecasting & pipeline analytics",
+      "Lead research with its sources cited",
+      "Scoring against your ideal customer",
+      "Personal outreach drafts, approved by a person",
+      "Follow-up reminders so nobody slips",
+      "Updates to the CRM you already use",
     ],
     terminal: [
-      "> LEADS_PROCESSED: 1,284 today",
-      "> CONVERSION_RATE: 34.2% (+12% MoM)",
-      "> PIPELINE_VALUE: $2.4M active",
-      "> DEALS_CLOSED: 47 this week",
+      "> START: AI Time Audit, one week",
+      "> MAP: your pipeline and who sells",
+      "> BUILD: on your CRM and inbox",
+      "> PROVE: results from your own systems",
     ],
     icon: TrendingUp,
     accent: "#3B82F6",
@@ -69,20 +70,20 @@ const solutions = [
     num: "03",
     domain: "Growth",
     title: "Marketing AI",
-    subtitle: "Hyper-personalized campaigns at infinite scale",
-    desc: "Deploy campaigns across every platform simultaneously, each perfectly tailored to the individual viewer. Our AI learns your brand voice deeply — then outputs content that sounds like your best copywriter wrote it.",
+    subtitle: "On-brand content, checked before it posts",
+    desc: "AI trained on your brand voice and your facts drafts posts and campaigns your team approves. Every draft is checked for vague copy and claims you cannot back up, and published through Vyuh Drift so each post has a receipt.",
     features: [
-      "Multi-platform campaign orchestration",
-      "Deep brand voice AI training",
-      "A/B testing at population scale",
-      "Predictive audience segmentation",
-      "Real-time performance optimization",
+      "Brand voice trained on your own material",
+      "Campaign drafts across your channels",
+      "Checks for vague copy and unbacked claims",
+      "Approval before anything posts",
+      "A receipt for every post, via Vyuh Drift",
     ],
     terminal: [
-      "> CAMPAIGNS_ACTIVE: 38 across 6 platforms",
-      "> IMPRESSIONS: 4.2M this month",
-      "> BEST_CTR: 8.7% (email sequence #4)",
-      "> BRAND_VOICE_SCORE: 97.3 / 100",
+      "> START: AI Time Audit, one week",
+      "> MAP: your channels and who posts",
+      "> BUILD: on your brand voice and facts",
+      "> PROVE: results from your own systems",
     ],
     icon: Megaphone,
     accent: "#A855F7",
@@ -95,19 +96,19 @@ const solutions = [
     domain: "Operations",
     title: "HR & Operations",
     subtitle: "Automate your internal infrastructure",
-    desc: "From resume screening to employee onboarding, our AI handles the operational workload so your HR team can focus on what humans do best — building culture and making strategic hires.",
+    desc: "From screening CVs to parsing documents and answering policy questions, AI takes the repetitive work off your team's plate. A person stays in charge of every hiring decision.",
     features: [
-      "Intelligent resume screening & ranking",
-      "Bulk document parsing & data extraction",
-      "Automated employee onboarding flows",
-      "Policy & compliance Q&A chatbot",
-      "Workforce analytics & reporting",
+      "CV screening against your own criteria",
+      "Document parsing and data extraction",
+      "Onboarding checklists and reminders",
+      "Policy questions answered from your handbook",
+      "A clear log of what the AI did",
     ],
     terminal: [
-      "> RESUMES_SCREENED: 2,847 this cycle",
-      "> TOP_CANDIDATES: 12 shortlisted",
-      "> ONBOARDING_TIME: 2.1 days (was 14)",
-      "> HR_TICKETS_AUTO: 78% resolved",
+      "> START: AI Time Audit, one week",
+      "> MAP: your paperwork and who does it",
+      "> BUILD: on your documents and tools",
+      "> PROVE: results from your own systems",
     ],
     icon: Users,
     accent: "#10B981",
@@ -119,20 +120,20 @@ const solutions = [
     num: "05",
     domain: "Infrastructure",
     title: "Website & App Intelligence",
-    subtitle: "Digital storefronts that think and adapt",
-    desc: "We build elite web and mobile products embedded with deep AI — tracking user behavior, predicting intent, personalizing every interaction, and continuously optimizing for conversion. Your website, alive.",
+    subtitle: "Websites and apps with AI built in",
+    desc: "We build web and mobile products with AI where it helps: answering customers, tailoring what they see, and showing you what visitors actually do. Measured in your own analytics, not ours.",
     features: [
-      "Behavior tracking & intent prediction",
-      "Adaptive UX that learns per user",
-      "AI-powered conversion optimization",
-      "Embedded chatbot & support agents",
-      "Performance analytics dashboard",
+      "Website and app builds",
+      "Chat and support assistants on your own content",
+      "Tailored content and recommendations",
+      "Conversion tracking you can check yourself",
+      "A performance dashboard",
     ],
     terminal: [
-      "> SESSIONS_TODAY: 18,492 unique",
-      "> AVG_CONVERSION: +41% since AI deploy",
-      "> CHATBOT_DEFLECTION: 83% of tickets",
-      "> PAGE_SPEED: 97 / 100 (Lighthouse)",
+      "> START: AI Time Audit, one week",
+      "> MAP: your visitors and what they need",
+      "> BUILD: on your site and analytics",
+      "> PROVE: results from your own systems",
     ],
     icon: LayoutTemplate,
     accent: "#FF6B35",
@@ -145,17 +146,17 @@ const pillars = [
   {
     icon: Zap,
     title: "Speed",
-    desc: "AI agents deploy in days, not months. From signed contract to live system in under 72 hours for most integrations.",
+    desc: "Most builds go live in days, not months. You see a working version early, and we adjust from there.",
   },
   {
-    icon: Globe,
-    title: "Scale",
-    desc: "Built to handle millions of operations per day without adding a single headcount. Infinite capacity, fixed cost.",
+    icon: BadgeCheck,
+    title: "Proof",
+    desc: "Every result we report comes from your own systems. No made-up dashboards, no vanity numbers.",
   },
   {
     icon: Lock,
     title: "Security",
-    desc: "Every system we build is encrypted end-to-end, SOC2-ready, and designed with zero-trust architecture from day one.",
+    desc: "Each system gets only the access it needs, runs in your own accounts where possible, and we tell you exactly what data it keeps.",
   },
 ];
 
@@ -252,7 +253,7 @@ function SolutionCard({
               (e.currentTarget as HTMLElement).style.boxShadow = "none";
             }}
           >
-            Activate {title}
+            Ask about {title}
             <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
           </motion.a>
         </div>
@@ -296,7 +297,7 @@ function SolutionCard({
               <div className="w-2 h-2 rounded-full bg-yellow-500/40" />
               <div className="w-2 h-2 rounded-full bg-green-500/40" />
               <span className="font-mono text-[10px] text-gray-500 ml-2 tracking-widest">
-                VYUH::{domain.toUpperCase()}_STATUS
+                VYUH::{domain.toUpperCase()}_PLAN
               </span>
             </div>
             {/* Lines */}
@@ -397,13 +398,24 @@ export default function SolutionsPage() {
             transition={{ delay: 0.5 }}
             className="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed font-light"
           >
-            Five purpose-built AI systems that replace entire departments,
-            scale without limits, and deliver results from day one.
+            One product you can try today, and five AI systems we build to
+            order around the way your team already works.
           </motion.p>
         </section>
 
+        {/* ── Available now: the product ───────────────────── */}
+        <DriftSection />
+
         {/* ── Solution cards ────────────────────────────────── */}
         <section className="w-full">
+          <div className="max-w-[1200px] mx-auto px-8 pb-8">
+            <p className="font-mono text-[11px] tracking-[0.4em] text-[#FF1E1E]/50 uppercase mb-3">
+              {"// Built to order"}
+            </p>
+            <h2 className="font-mono font-black text-3xl md:text-4xl text-white tracking-tight">
+              Systems we build for your team
+            </h2>
+          </div>
           {solutions.map((sol, i) => (
             <SolutionCard key={sol.id} {...sol} index={i} />
           ))}
@@ -456,8 +468,8 @@ export default function SolutionsPage() {
               Ready to deploy AI?
             </h2>
             <p className="text-gray-500 font-light leading-relaxed">
-              Most systems go live within 72 hours of contract signing.
-              No lock-in. No bloated retainers. Just results.
+              Start with the one-week AI Time Audit. If we cannot find the
+              hours, you don&apos;t pay. No lock-in, no bloated retainers.
             </p>
             <a
               href="/#contact"
