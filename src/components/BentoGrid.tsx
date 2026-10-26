@@ -25,7 +25,8 @@ const bentoItems = [
     title: "Marketing AI",
     domain: "Growth",
     icon: Megaphone,
-    desc: "Hyper-personalized campaigns across every platform, tuned to your brand voice and optimized in real time.",
+    desc: "On-brand posts and campaigns your team approves, published through Vyuh Drift with a receipt for every post.",
+    link: { href: "#drift", label: "See Vyuh Drift" },
     className: "md:col-span-1 min-h-[280px]",
   },
   {
@@ -90,6 +91,15 @@ export function BentoGrid() {
               <p className="text-gray-500 text-sm md:text-[15px] leading-relaxed max-w-[95%] font-light group-hover:text-gray-400 transition-colors duration-300">
                 {item.desc}
               </p>
+              {item.link && (
+                <a
+                  href={item.link.href}
+                  className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.2em] uppercase text-[#FF1E1E] hover:text-white transition-colors"
+                >
+                  {item.link.label}
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              )}
             </div>
           </div>
         </motion.div>

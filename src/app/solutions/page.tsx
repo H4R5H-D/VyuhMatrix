@@ -79,6 +79,7 @@ const solutions = [
       "Approval before anything posts",
       "A receipt for every post, via Vyuh Drift",
     ],
+    link: { href: "#drift", label: "See Vyuh Drift" },
     terminal: [
       "> START: AI Time Audit, one week",
       "> MAP: your channels and who posts",
@@ -163,7 +164,7 @@ const pillars = [
 /* ── Card component ────────────────────────────────────────────── */
 
 function SolutionCard({
-  num, domain, title, subtitle, desc, features, terminal, icon: Icon, accent, glow, border,
+  num, domain, title, subtitle, desc, features, terminal, link, icon: Icon, accent, glow, border,
   index,
 }: (typeof solutions)[0] & { index: number }) {
   const ref = useRef(null);
@@ -256,6 +257,15 @@ function SolutionCard({
             Ask about {title}
             <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
           </motion.a>
+          {link && (
+            <a
+              href={link.href}
+              className="-mt-2 inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-gray-400 hover:text-white transition-colors w-fit"
+            >
+              {link.label}
+              <ArrowRight className="w-3 h-3" />
+            </a>
+          )}
         </div>
 
         {/* ── Visual column ── */}
