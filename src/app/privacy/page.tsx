@@ -50,7 +50,7 @@ const sections = [
   {
     h: "7. Contact",
     p: [
-      "Questions about this policy? Email harsh@vyuhmatrix.com.",
+      "Questions about this policy? Email harsh@vyuhmatrix.com, or write to Vyuh Matrix, 66, Pratapura, Heerapura, Jhansi, Uttar Pradesh 284003, India.",
     ],
   },
 ];
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
         <h1 className="font-mono font-black text-4xl md:text-5xl text-white tracking-tight mb-3">
           Privacy Policy
         </h1>
-        <p className="font-mono text-xs text-gray-600 mb-12">Last updated: June 2026</p>
+        <p className="font-mono text-xs text-gray-600 mb-12">Last updated: October 2026</p>
 
         <p className="leading-relaxed text-gray-400 mb-10">
           Vyuh Matrix (&quot;we&quot;, &quot;us&quot;) builds custom AI systems for businesses.

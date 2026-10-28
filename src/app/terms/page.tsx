@@ -47,7 +47,7 @@ const sections = [
   {
     h: "7. Contact",
     p: [
-      "Questions about these terms? Email harsh@vyuhmatrix.com.",
+      "Questions about these terms? Email harsh@vyuhmatrix.com, or write to Vyuh Matrix, 66, Pratapura, Heerapura, Jhansi, Uttar Pradesh 284003, India.",
     ],
   },
 ];
@@ -63,7 +63,7 @@ export default function TermsPage() {
         <h1 className="font-mono font-black text-4xl md:text-5xl text-white tracking-tight mb-3">
           Terms of Service
         </h1>
-        <p className="font-mono text-xs text-gray-600 mb-12">Last updated: June 2026</p>
+        <p className="font-mono text-xs text-gray-600 mb-12">Last updated: October 2026</p>
 
         <div className="flex flex-col gap-10">
           {sections.map((s) => (

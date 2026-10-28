@@ -48,6 +48,11 @@ export function Footer() {
           <p className="text-gray-600 text-[12px] leading-relaxed">
             We reply within 24 hours.
           </p>
+          <address className="not-italic text-gray-500 text-[12px] leading-relaxed">
+            Vyuh Matrix<br />
+            66, Pratapura, Heerapura<br />
+            Jhansi, Uttar Pradesh 284003, India
+          </address>
         </div>
       </div>
 
